@@ -1,0 +1,37 @@
+.post {
+    display: flex;
+    background-color: white;
+    border: 1px solid lightgray;
+    margin: 25px;
+    max-width: 750px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+.date {
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+.picture {
+    width: 100%;
+    object-fit: fill;
+    /* border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray; */
+}
+
+.explanation {
+    font-weight: normal;
+    padding: 1px 20px;
+    text-align: center;
+}
