@@ -1,0 +1,17 @@
+.App-logo {
+    height: 30px;
+    margin: 15px;
+    padding-left: 120px;
+}
+  
+.logo-title {
+    font-style: italic;
+}
+
+.App-header {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+}

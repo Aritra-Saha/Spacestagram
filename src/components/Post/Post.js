@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { BsHeartFill, BsHeart } from 'react-icons/bs'; 
+import Heart from 'react-animated-heart';
 import './Post.css';
 
 function getDate(date) {
@@ -45,31 +48,21 @@ function getDate(date) {
 }
 
 function Post({url, title, date, explanation}) {
-    // const [data, setData] = useState({});
-
-    // const apiKey = "https://api.nasa.gov/planetary/apod?api_key=d4catWkayonYRsvEhfcV7ipRbA6vTJ3aK7bW4ozz&date=2022-04-26";
-    
-    // // api key: d4catWkayonYRsvEhfcV7ipRbA6vTJ3aK7bW4ozz
-
-    
-
-    // useEffect(() => {
-    //     fetch(apiKey)
-    //         .then(res => res.json())
-    //         .then(
-    //             (result) => {
-    //                 setData(result);
-    //             }
-    //         )
-    // }, [])
-
-    // const date = data.date;
+    const [liked, setLiked] = useState(false);
 
     return (
         <div className="post">
             <img src={url} className="picture" alt=""/>
             <div className="header">
-                <h4 className="title"><strong>{title}</strong></h4>
+                <button 
+                    onClick={()=> setLiked((isLiked) => !isLiked)}
+                    className="like-button"
+                >
+                    {liked && <BsHeartFill className='like'/>}
+                    {!liked && <BsHeart/>}
+                </button>
+                {/* <Heart isClick={liked} onClick={() => setLiked(!liked)} className="like-button"/> */}
+                <h4 className="title">{title}</h4>
                 <h4 className="date">{getDate(date)}</h4>
             </div>
             <h4 className="explanation">{explanation}</h4>
