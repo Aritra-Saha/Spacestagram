@@ -58,7 +58,6 @@ function Post({index, initialLiked, url, title, date, explanation}) {
                     onClick={() => {
                         setLiked((isLiked) => !isLiked);
                         let data = JSON.parse(sessionStorage.getItem("data"));
-                        console.log(index);
                         data[index].liked = !liked;
                         sessionStorage.setItem("data", JSON.stringify(data));
                     }}
