@@ -47,15 +47,21 @@ function getDate(date) {
     return month + " " + day + ", " + year;
 }
 
-function Post({url, title, date, explanation}) {
-    const [liked, setLiked] = useState(false);
+function Post({index, initialLiked, url, title, date, explanation}) {
+    const [liked, setLiked] = useState(initialLiked);
 
     return (
         <div className="post">
             <img src={url} className="picture" alt=""/>
             <div className="header">
                 <button 
-                    onClick={()=> setLiked((isLiked) => !isLiked)}
+                    onClick={() => {
+                        setLiked((isLiked) => !isLiked);
+                        let data = JSON.parse(sessionStorage.getItem("data"));
+                        console.log(index);
+                        data[index].liked = !liked;
+                        sessionStorage.setItem("data", JSON.stringify(data));
+                    }}
                     className="like-button"
                 >
                     {liked && <BsHeartFill className='like'/>}

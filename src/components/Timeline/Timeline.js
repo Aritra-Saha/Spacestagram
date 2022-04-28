@@ -11,19 +11,28 @@ function Timeline() {
     // api key: d4catWkayonYRsvEhfcV7ipRbA6vTJ3aK7bW4ozz&count=30&thumbs=TRUE
 
     useEffect(() => {
-        fetch(apiKey)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setData(result);
-                }
-            )
+        if (sessionStorage.getItem("data")) {
+            setData(JSON.parse(sessionStorage.getItem("data")));
+        }
+        else {
+            fetch(apiKey)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        result.map((object) => {object["liked"] = false});
+                        setData(result);
+                        sessionStorage.setItem("data", JSON.stringify(result));
+                    }
+                )
+        }
     }, [])
 
     return (
         <div>
-        {data.map((post) => (
+        {data.map((post, index) => (
             <Post
+                index={index}
+                initialLiked={post.liked ? post.liked : false}
                 url={post.hdurl}
                 title={post.title}
                 date={post.date}
